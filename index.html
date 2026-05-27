@@ -4,9 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Тренер Светлана Устинова</title>
+  <link rel="icon" type="image/x-icon" href="ico.ico">
   <link rel="stylesheet" href="style.css">
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+    ym(109456067, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109456067" style="position:absolute; left:-9999px;" alt=""></div></noscript>
 
   <!-- HEADER с бургер-меню -->
   <header class="header">
@@ -177,30 +191,6 @@
         });
       }
 
-      // Cookie consent и Яндекс.Метрика
-      function loadYandexMetrika() {
-        (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments);};
-          m[i].l=1*new Date();
-          for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
-        })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
-        ym(XXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
-      }
-      if (!localStorage.getItem('cookieConsent')) {
-        const banner = document.createElement('div');
-        banner.className = 'cookie-banner';
-        banner.innerHTML = `<p>Мы используем cookies для сбора статистики (Яндекс.Метрика). Продолжая использовать сайт, вы соглашаетесь с этим.</p><button id="acceptCookies">Принять</button>`;
-        document.body.appendChild(banner);
-        document.getElementById('acceptCookies').addEventListener('click', () => {
-          localStorage.setItem('cookieConsent', 'true');
-          banner.remove();
-          loadYandexMetrika();
-        });
-      } else {
-        loadYandexMetrika();
-      }
-
       // ========== 1. ЛЕВАЯ КАРУСЕЛЬ (фото тренера) ==========
       const leftTrack = document.getElementById('carouselTrackLeft');
       if (leftTrack) {
@@ -325,6 +315,9 @@
       const certNext = document.querySelector('.cert-next-btn');
       if (certTrack && certPrev && certNext) {
         let autoScrollInterval;
+        let isDragging = false;
+        let startX = 0;
+        let startScrollLeft = 0;
         function getStep() {
           const card = certTrack.querySelector('.certificate-card');
           return card ? card.offsetWidth + 20 : 300;
@@ -350,6 +343,37 @@
         certTrack.addEventListener('mouseleave', startAuto);
         certTrack.addEventListener('touchstart', stopAuto);
         certTrack.addEventListener('touchend', startAuto);
+
+        // Desktop drag-scroll (ПК): позволяет листать мышью, как на мобилке.
+        certTrack.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          startX = e.pageX;
+          startScrollLeft = certTrack.scrollLeft;
+          stopAuto();
+          certTrack.style.scrollBehavior = 'auto';
+          e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          const walk = e.pageX - startX;
+          certTrack.scrollLeft = startScrollLeft - walk;
+        });
+
+        window.addEventListener('mouseup', () => {
+          if (!isDragging) return;
+          isDragging = false;
+          certTrack.style.scrollBehavior = 'smooth';
+          startAuto();
+        });
+
+        certTrack.addEventListener('wheel', (e) => {
+          if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+            certTrack.scrollLeft += e.deltaY;
+            e.preventDefault();
+          }
+        }, { passive: false });
+
         startAuto();
       }
     })();
