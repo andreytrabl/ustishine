@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Тренер Светлана Устинова</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER с бургер-меню -->
+  <header class="header">
+    <div class="burger" id="burgerBtn">
+      <span></span><span></span><span></span>
+    </div>
+    <nav class="nav">
+      <ul class="menu" id="menu">
+        <li><a href="#hero">Главная</a></li>
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#training">Тренировки</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1>светлана устинова</h1>
+      <h3>тренер, с которым комфортно именно тебе</h3>
+      <p></p>
+      <a href="https://t.me/Ustishine3" class="btn" target="_blank">написать</a>
+      <div class="socials">
+        <a href="https://vk.ru/ustishine" target="_blank"><img src="assets/icons/vk.png" alt="vk"></a>
+        <a href="https://rutube.ru/channel/44270024" target="_blank"><img src="assets/icons/rutube.png" alt="rutube"></a>
+        <a href="https://t.me/Ustishine3" target="_blank"><img src="assets/icons/telegram.png" alt="telegram"></a>
+        <a href="https://youtube.com/@svetaveshaet" target="_blank"><img src="assets/icons/youtube.png" alt="youtube"></a>
+        <a href="https://www.instagram.com/ustishine_fam" target="_blank"><img src="assets/icons/instagram.png" alt="instagram"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <!-- Первый ряд: карусель (фото тренера) слева, текст справа -->
+    <div class="about-row">
+      <div class="about-carousel">
+        <div class="carousel-wrapper">
+          <div class="carousel-track" id="carouselTrackLeft">
+            <div class="carousel-slide"><img src="assets/trener/photo1.png" alt="photo 1"></div>
+            <div class="carousel-slide"><img src="assets/trener/photo2.png" alt="photo 2"></div>
+            <div class="carousel-slide"><img src="assets/trener/photo3.png" alt="photo 3"></div>
+            <div class="carousel-slide"><img src="assets/trener/photo4.png" alt="photo 4"></div>
+            <div class="carousel-slide"><img src="assets/trener/photo5.png" alt="photo 5"></div>
+          </div>
+          <button class="carousel-btn prev-btn">&#10094;</button>
+          <button class="carousel-btn next-btn">&#10095;</button>
+        </div>
+      </div>
+      <div class="about-text">
+        <h2>обо мне</h2>
+        <p>Добрейшего времени суток! Меня зовут Света, и я рада приветствовать тебя.<br><br>Тебе точно нужно связаться со мной, если ты хочешь:<br>• улучшить своё физическое состояние<br>• обеспечить себе комфортную и активную жизнь<br>• построить красивое и подтянутое тело.<br><br>Я являюсь дипломированным фитнес-тренером и прошла обучение в VP Fitnes consulting по специализациям «Персональный тренер тренажерного зала», «Тренер групповых программ». В моей копилке огромное количество часов практических занятий.</p>
+      </div>
+    </div>
+
+    <!-- Второй ряд: мои сертификаты – карусель карточек во всю ширину -->
+    <div class="about-row certificates-row">
+      <div class="about-text certificates-header">
+        <h2>мои сертификаты</h2>
+      </div>
+      <div class="certificates-carousel">
+        <div class="certificates-wrapper">
+          <div class="certificates-track" id="certificatesTrack">
+            <div class="certificate-card"><img src="assets/edu/photo1.png" alt="Сертификат 1"></div>
+            <div class="certificate-card"><img src="assets/edu/photo2.png" alt="Сертификат 2"></div>
+            <div class="certificate-card"><img src="assets/edu/photo3.png" alt="Сертификат 3"></div>
+            <div class="certificate-card"><img src="assets/edu/photo4.png" alt="Сертификат 4"></div>
+            <div class="certificate-card"><img src="assets/edu/photo5.png" alt="Сертификат 5"></div>
+            <div class="certificate-card"><img src="assets/edu/photo6.png" alt="Сертификат 6"></div>
+            <div class="certificate-card"><img src="assets/edu/photo7.png" alt="Сертификат 7"></div>
+            <div class="certificate-card"><img src="assets/edu/photo8.png" alt="Сертификат 8"></div>
+            <div class="certificate-card"><img src="assets/edu/photo9.png" alt="Сертификат 9"></div>
+            <div class="certificate-card"><img src="assets/edu/photo10.png" alt="Сертификат 10"></div>
+            <div class="certificate-card"><img src="assets/edu/photo11.png" alt="Сертификат 11"></div>
+            <div class="certificate-card"><img src="assets/edu/photo12.png" alt="Сертификат 12"></div>
+          </div>
+          <button class="carousel-btn cert-prev-btn">&#10094;</button>
+          <button class="carousel-btn cert-next-btn">&#10095;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING -->
+  <section id="training" class="training-section">
+    <div class="training-container">
+      <h2 class="section-title">тренировки</h2>
+      <div class="training-columns">
+        <div class="training-col">
+          <h3>Стретчинг</h3>
+          <p>Для возвращения гибкости и свободы движений через снятие напряжения и зажимов в теле, а также улучшение его мобильности.<br><br>Стретчинг снимает стресс и нервное напряжение, т.к. создаёт эффект медитации и помогает снизить уровень кортизола (гормона стресса).</p>
+        </div>
+        <div class="training-col">
+          <h3>Функциональные и круговые тренировки</h3>
+          <p>Чтобы визуально подтянуть тело, сформировать мышечный корсет и улучшить выносливость.<br><br>Упражнения часто имитируют движения из повседневной жизни, что повышает силу и ловкость в быту.</p>
+        </div>
+        <div class="training-col">
+          <h3>Индивидуальные тренировки офлайн</h3>
+          <h4>Стретчинг</h4>
+          <p>Комплексная растяжка всего тела (возможно сделать акцент на определённую зону по запросу подопечного) время занятия 60 минут.</p>
+          <br>
+          <h4>Функциональная круговая</h4>
+          <p>Тренировка на все группы мышц с использованием веса собственного тела или простого инвентаря. Время занятия 60 минут.</p>
+        </div>
+        <div class="training-col">
+          <h3>Индивидуальные тренировки онлайн</h3>
+          <h4>Персональное фитнес-сопровождение</h4>
+          <p>В течение 4-х полных недель (28 дней):<br>• тренировочные программы (вид тренировок и их количество зависит от твоего запроса)<br>• проверка и коррекция техники<br>• анализ твоего рациона<br>• я буду на связи, подбадривая и сподвигая на новые свершения</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+  <section id="contacts" class="contacts">
+    <div class="contacts-card">
+      <div class="contacts-content">
+        <h3>Записаться на тренировку</h3>
+        <div class="contacts-buttons">
+          <a href="https://t.me/Ustishine3" class="btn" target="_blank">НАПИСАТЬ</a>
+        </div>
+        <div class="contacts-socials">
+          <a href="https://vk.ru/ustishine" target="_blank"><img src="assets/icons/vk.png" alt="vk"></a>
+          <a href="https://rutube.ru/channel/44270024" target="_blank"><img src="assets/icons/rutube.png" alt="rutube"></a>
+          <a href="https://t.me/Ustishine3" target="_blank"><img src="assets/icons/telegram.png" alt="telegram"></a>
+          <a href="https://youtube.com/@svetaveshaet" target="_blank"><img src="assets/icons/youtube.png" alt="youtube"></a>
+          <a href="https://www.instagram.com/ustishine_fam" target="_blank"><img src="assets/icons/instagram.png" alt="instagram"></a>
+        </div>
+        <div class="contacts-address">
+          <p>г. Серпухов, ТЦ Пассаж, ул. Фрунзе, дом 22, 3 этаж, офис № 15</p>
+        </div>
+      </div>
+      <div class="contacts-map">
+        <iframe src="https://yandex.ru/map-widget/v1/?mode=search&text=%D0%A1%D0%B5%D1%80%D0%BF%D1%83%D1%85%D0%BE%D0%B2%20%D1%83%D0%BB.%20%D0%A4%D1%80%D1%83%D0%BD%D0%B7%D0%B5%2022%20%D0%A2%D0%A6%20%D0%9F%D0%B0%D1%81%D1%81%D0%B0%D0%B6&ll=37.4083%2C54.9065&z=17" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>
+        <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+        <span> | </span>
+        <a href="terms.html" target="_blank">Пользовательское соглашение</a>
+      </p>
+      <p>*Instagram и Facebook признаны экстремистскими организациями и запрещены на территории РФ.</p>
+      <p>© Светлана Устинова, 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Бургер-меню
+      const burger = document.getElementById('burgerBtn');
+      const menu = document.getElementById('menu');
+      if (burger && menu) {
+        burger.addEventListener('click', () => {
+          burger.classList.toggle('active');
+          menu.classList.toggle('active');
+        });
+        menu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            burger.classList.remove('active');
+            menu.classList.remove('active');
+          });
+        });
+      }
+
+      // Cookie consent и Яндекс.Метрика
+      function loadYandexMetrika() {
+        (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments);};
+          m[i].l=1*new Date();
+          for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+        })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+        ym(XXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+      }
+      if (!localStorage.getItem('cookieConsent')) {
+        const banner = document.createElement('div');
+        banner.className = 'cookie-banner';
+        banner.innerHTML = `<p>Мы используем cookies для сбора статистики (Яндекс.Метрика). Продолжая использовать сайт, вы соглашаетесь с этим.</p><button id="acceptCookies">Принять</button>`;
+        document.body.appendChild(banner);
+        document.getElementById('acceptCookies').addEventListener('click', () => {
+          localStorage.setItem('cookieConsent', 'true');
+          banner.remove();
+          loadYandexMetrika();
+        });
+      } else {
+        loadYandexMetrika();
+      }
+
+      // ========== 1. ЛЕВАЯ КАРУСЕЛЬ (фото тренера) ==========
+      const leftTrack = document.getElementById('carouselTrackLeft');
+      if (leftTrack) {
+        const slides = Array.from(leftTrack.children);
+        const originalCount = slides.length;
+        slides.forEach(slide => {
+          const clone = slide.cloneNode(true);
+          leftTrack.appendChild(clone);
+        });
+        let currentIndex = 0;
+        let autoPlayInterval;
+        const delay = 4000;
+        const transitionTime = 300;
+        let startX = 0, startIndex = 0, isDragging = false;
+
+        leftTrack.style.transition = `transform ${transitionTime}ms ease`;
+
+        function updateSlide(index, instant = false) {
+          if (instant) leftTrack.style.transition = 'none';
+          else leftTrack.style.transition = `transform ${transitionTime}ms ease`;
+          leftTrack.style.transform = `translateX(${-index * 100}%)`;
+          currentIndex = index;
+        }
+        function nextSlide() {
+          if (currentIndex >= originalCount) {
+            updateSlide(0, true);
+            leftTrack.offsetHeight;
+            updateSlide(1);
+          } else {
+            updateSlide(currentIndex + 1);
+          }
+        }
+        function prevSlide() {
+          if (currentIndex <= 0) {
+            updateSlide(originalCount, true);
+            leftTrack.offsetHeight;
+            updateSlide(originalCount - 1);
+          } else {
+            updateSlide(currentIndex - 1);
+          }
+        }
+        function startAuto() { stopAuto(); autoPlayInterval = setInterval(nextSlide, delay); }
+        function stopAuto() { if (autoPlayInterval) clearInterval(autoPlayInterval); }
+
+        const wrapper = leftTrack.parentElement;
+
+        // --- Touch events (исправлено: preventDefault только при горизонтальном движении) ---
+        wrapper.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 1) {
+            stopAuto();
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            startIndex = currentIndex;
+            leftTrack.style.transition = 'none';
+            // НЕ вызываем preventDefault здесь, чтобы не блокировать вертикальный скролл
+          }
+        }, { passive: false });
+        wrapper.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          const deltaX = e.touches[0].clientX - startX;
+          // Если движение горизонтальное больше 5px – запрещаем скролл страницы
+          if (Math.abs(deltaX) > 5) e.preventDefault();
+          const percent = (deltaX / wrapper.clientWidth) * 100;
+          let newIndex = startIndex - percent / 100;
+          leftTrack.style.transform = `translateX(${-newIndex * 100}%)`;
+        }, { passive: false });
+        wrapper.addEventListener('touchend', (e) => {
+          if (!isDragging) return;
+          isDragging = false;
+          const deltaX = e.changedTouches[0].clientX - startX;
+          if (Math.abs(deltaX) > 30) {
+            deltaX > 0 ? prevSlide() : nextSlide();
+          } else {
+            updateSlide(currentIndex);
+          }
+          startAuto();
+        });
+
+        // --- Mouse events ---
+        wrapper.addEventListener('mousedown', (e) => {
+          stopAuto();
+          isDragging = true;
+          startX = e.clientX;
+          startIndex = currentIndex;
+          leftTrack.style.transition = 'none';
+          e.preventDefault();
+        });
+        window.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          const deltaX = e.clientX - startX;
+          const percent = (deltaX / wrapper.clientWidth) * 100;
+          let newIndex = startIndex - percent / 100;
+          leftTrack.style.transform = `translateX(${-newIndex * 100}%)`;
+        });
+        window.addEventListener('mouseup', (e) => {
+          if (!isDragging) return;
+          isDragging = false;
+          const deltaX = e.clientX - startX;
+          if (Math.abs(deltaX) > 30) {
+            deltaX > 0 ? prevSlide() : nextSlide();
+          } else {
+            updateSlide(currentIndex);
+          }
+          startAuto();
+        });
+
+        // Кнопки
+        const prevBtn = wrapper.querySelector('.prev-btn');
+        const nextBtn = wrapper.querySelector('.next-btn');
+        if (prevBtn) prevBtn.addEventListener('click', () => { stopAuto(); prevSlide(); startAuto(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { stopAuto(); nextSlide(); startAuto(); });
+
+        updateSlide(0, true);
+        startAuto();
+        wrapper.addEventListener('mouseenter', stopAuto);
+        wrapper.addEventListener('mouseleave', startAuto);
+      }
+
+      // ========== 2. КАРУСЕЛЬ СЕРТИФИКАТОВ ==========
+      const certTrack = document.getElementById('certificatesTrack');
+      const certPrev = document.querySelector('.cert-prev-btn');
+      const certNext = document.querySelector('.cert-next-btn');
+      if (certTrack && certPrev && certNext) {
+        let autoScrollInterval;
+        function getStep() {
+          const card = certTrack.querySelector('.certificate-card');
+          return card ? card.offsetWidth + 20 : 300;
+        }
+        function scrollNext() { certTrack.scrollBy({ left: getStep(), behavior: 'smooth' }); }
+        function scrollPrev() { certTrack.scrollBy({ left: -getStep(), behavior: 'smooth' }); }
+        function startAuto() {
+          stopAuto();
+          autoScrollInterval = setInterval(() => {
+            const maxScroll = certTrack.scrollWidth - certTrack.clientWidth;
+            if (certTrack.scrollLeft + certTrack.clientWidth >= maxScroll - 10) {
+              certTrack.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+              scrollNext();
+            }
+          }, 4000);
+        }
+        function stopAuto() { if (autoScrollInterval) clearInterval(autoScrollInterval); }
+
+        certPrev.addEventListener('click', () => { stopAuto(); scrollPrev(); startAuto(); });
+        certNext.addEventListener('click', () => { stopAuto(); scrollNext(); startAuto(); });
+        certTrack.addEventListener('mouseenter', stopAuto);
+        certTrack.addEventListener('mouseleave', startAuto);
+        certTrack.addEventListener('touchstart', stopAuto);
+        certTrack.addEventListener('touchend', startAuto);
+        startAuto();
+      }
+    })();
+  </script>
+</body>
+</html>
