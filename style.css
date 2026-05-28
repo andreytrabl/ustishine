@@ -371,6 +371,57 @@ body {
   right: 10px;
 }
 
+/* ========== КАРУСЕЛЬ VK ВИДЕО ========== */
+.videos-row {
+  flex-direction: column;
+  gap: 30px;
+}
+.videos-header {
+  width: 100%;
+  text-align: left;
+}
+.videos-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.videos-wrapper {
+  position: relative;
+  width: 100%;
+}
+.videos-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 10px;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  scroll-snap-type: x mandatory;
+}
+.videos-track::-webkit-scrollbar {
+  display: none;
+}
+.video-card {
+  flex: 0 0 calc((100% - 40px) / 3);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+  scroll-snap-align: start;
+}
+.video-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border: 0;
+  pointer-events: none;
+}
+.vk-prev-btn { left: 10px; }
+.vk-next-btn { right: 10px; }
+
 /* ========== TRAINING ========== */
 .training-section {
   padding: 60px 20px 50px;
@@ -683,6 +734,9 @@ body {
   .certificate-card {
     flex: 0 0 calc((100% - 40px) / 3);
   }
+  .video-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
 }
 
 @media (max-width: 768px) {
@@ -807,7 +861,16 @@ body {
   .certificate-card {
     flex: 0 0 calc((100% - 20px) / 2);
   }
+  .video-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
   .certificates-wrapper .carousel-btn {
+    opacity: 1;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+  .videos-wrapper .carousel-btn {
     opacity: 1;
     width: 32px;
     height: 32px;
@@ -815,6 +878,8 @@ body {
   }
   .cert-prev-btn { left: 5px; }
   .cert-next-btn { right: 5px; }
+  .vk-prev-btn { left: 5px; }
+  .vk-next-btn { right: 5px; }
 }
 
 @media (max-width: 480px) {
@@ -854,6 +919,9 @@ body {
   }
   /* Адаптив сертификатов */
   .certificate-card {
+    flex: 0 0 100%;
+  }
+  .video-card {
     flex: 0 0 100%;
   }
 }
