@@ -112,24 +112,48 @@
       <div class="training-columns">
         <div class="training-col">
           <h3>Стретчинг</h3>
+          <div class="training-price">
+            <span class="training-price-old">3000 ₽</span>
+            <span>1000 ₽</span>
+          </div>
+          <div class="training-price-note">весь июнь</div>
           <p>Для возвращения гибкости и свободы движений через снятие напряжения и зажимов в теле, а также улучшение его мобильности.<br><br>Стретчинг снимает стресс и нервное напряжение, т.к. создаёт эффект медитации и помогает снизить уровень кортизола (гормона стресса).</p>
+          <a href="https://t.me/Ustishine3" class="btn training-action-btn" target="_blank">записаться</a>
         </div>
         <div class="training-col">
           <h3>Функциональные и круговые тренировки</h3>
+          <div class="training-price">
+            <span class="training-price-old">3000 ₽</span>
+            <span>1000 ₽</span>
+          </div>
+          <div class="training-price-note">весь июнь</div>
           <p>Чтобы визуально подтянуть тело, сформировать мышечный корсет и улучшить выносливость.<br><br>Упражнения часто имитируют движения из повседневной жизни, что повышает силу и ловкость в быту.</p>
+          <a href="https://t.me/Ustishine3" class="btn training-action-btn" target="_blank">записаться</a>
         </div>
         <div class="training-col">
           <h3>Индивидуальные тренировки офлайн</h3>
+          <div class="training-price">
+            <span class="training-price-old">3000 ₽</span>
+            <span>1000 ₽</span>
+          </div>
+          <div class="training-price-note">весь июнь</div>
           <h4>Стретчинг</h4>
           <p>Комплексная растяжка всего тела (возможно сделать акцент на определённую зону по запросу подопечного) время занятия 60 минут.</p>
           <br>
           <h4>Функциональная круговая</h4>
           <p>Тренировка на все группы мышц с использованием веса собственного тела или простого инвентаря. Время занятия 60 минут.</p>
+          <a href="https://t.me/Ustishine3" class="btn training-action-btn" target="_blank">записаться</a>
         </div>
         <div class="training-col">
           <h3>Индивидуальные тренировки онлайн</h3>
+          <div class="training-price">
+            <span class="training-price-old">10 000 ₽</span>
+            <span>8000 ₽</span>
+          </div>
+          <div class="training-price-note">весь июнь</div>
           <h4>Персональное фитнес-сопровождение</h4>
           <p>В течение 4-х полных недель (28 дней):<br>• тренировочные программы (вид тренировок и их количество зависит от твоего запроса)<br>• проверка и коррекция техники<br>• анализ твоего рациона<br>• я буду на связи, подбадривая и сподвигая на новые свершения</p>
+          <a href="https://t.me/Ustishine3" class="btn training-action-btn" target="_blank">записаться</a>
         </div>
       </div>
     </div>
@@ -191,191 +215,119 @@
         });
       }
 
-      // ========== 1. ЛЕВАЯ КАРУСЕЛЬ (фото тренера) ==========
-      const leftTrack = document.getElementById('carouselTrackLeft');
-      if (leftTrack) {
-        const slides = Array.from(leftTrack.children);
-        const originalCount = slides.length;
-        slides.forEach(slide => {
-          const clone = slide.cloneNode(true);
-          leftTrack.appendChild(clone);
-        });
-        let currentIndex = 0;
+      function initModernCarousel({ trackSelector, prevSelector, nextSelector, delay = 4500 }) {
+        const track = document.querySelector(trackSelector);
+        const prevBtn = document.querySelector(prevSelector);
+        const nextBtn = document.querySelector(nextSelector);
+        if (!track || !prevBtn || !nextBtn) return;
+
         let autoPlayInterval;
-        const delay = 4000;
-        const transitionTime = 300;
-        let startX = 0, startIndex = 0, isDragging = false;
-
-        leftTrack.style.transition = `transform ${transitionTime}ms ease`;
-
-        function updateSlide(index, instant = false) {
-          if (instant) leftTrack.style.transition = 'none';
-          else leftTrack.style.transition = `transform ${transitionTime}ms ease`;
-          leftTrack.style.transform = `translateX(${-index * 100}%)`;
-          currentIndex = index;
-        }
-        function nextSlide() {
-          if (currentIndex >= originalCount) {
-            updateSlide(0, true);
-            leftTrack.offsetHeight;
-            updateSlide(1);
-          } else {
-            updateSlide(currentIndex + 1);
-          }
-        }
-        function prevSlide() {
-          if (currentIndex <= 0) {
-            updateSlide(originalCount, true);
-            leftTrack.offsetHeight;
-            updateSlide(originalCount - 1);
-          } else {
-            updateSlide(currentIndex - 1);
-          }
-        }
-        function startAuto() { stopAuto(); autoPlayInterval = setInterval(nextSlide, delay); }
-        function stopAuto() { if (autoPlayInterval) clearInterval(autoPlayInterval); }
-
-        const wrapper = leftTrack.parentElement;
-
-        // --- Touch events (исправлено: preventDefault только при горизонтальном движении) ---
-        wrapper.addEventListener('touchstart', (e) => {
-          if (e.touches.length === 1) {
-            stopAuto();
-            isDragging = true;
-            startX = e.touches[0].clientX;
-            startIndex = currentIndex;
-            leftTrack.style.transition = 'none';
-            // НЕ вызываем preventDefault здесь, чтобы не блокировать вертикальный скролл
-          }
-        }, { passive: false });
-        wrapper.addEventListener('touchmove', (e) => {
-          if (!isDragging) return;
-          const deltaX = e.touches[0].clientX - startX;
-          // Если движение горизонтальное больше 5px – запрещаем скролл страницы
-          if (Math.abs(deltaX) > 5) e.preventDefault();
-          const percent = (deltaX / wrapper.clientWidth) * 100;
-          let newIndex = startIndex - percent / 100;
-          leftTrack.style.transform = `translateX(${-newIndex * 100}%)`;
-        }, { passive: false });
-        wrapper.addEventListener('touchend', (e) => {
-          if (!isDragging) return;
-          isDragging = false;
-          const deltaX = e.changedTouches[0].clientX - startX;
-          if (Math.abs(deltaX) > 30) {
-            deltaX > 0 ? prevSlide() : nextSlide();
-          } else {
-            updateSlide(currentIndex);
-          }
-          startAuto();
-        });
-
-        // --- Mouse events ---
-        wrapper.addEventListener('mousedown', (e) => {
-          stopAuto();
-          isDragging = true;
-          startX = e.clientX;
-          startIndex = currentIndex;
-          leftTrack.style.transition = 'none';
-          e.preventDefault();
-        });
-        window.addEventListener('mousemove', (e) => {
-          if (!isDragging) return;
-          const deltaX = e.clientX - startX;
-          const percent = (deltaX / wrapper.clientWidth) * 100;
-          let newIndex = startIndex - percent / 100;
-          leftTrack.style.transform = `translateX(${-newIndex * 100}%)`;
-        });
-        window.addEventListener('mouseup', (e) => {
-          if (!isDragging) return;
-          isDragging = false;
-          const deltaX = e.clientX - startX;
-          if (Math.abs(deltaX) > 30) {
-            deltaX > 0 ? prevSlide() : nextSlide();
-          } else {
-            updateSlide(currentIndex);
-          }
-          startAuto();
-        });
-
-        // Кнопки
-        const prevBtn = wrapper.querySelector('.prev-btn');
-        const nextBtn = wrapper.querySelector('.next-btn');
-        if (prevBtn) prevBtn.addEventListener('click', () => { stopAuto(); prevSlide(); startAuto(); });
-        if (nextBtn) nextBtn.addEventListener('click', () => { stopAuto(); nextSlide(); startAuto(); });
-
-        updateSlide(0, true);
-        startAuto();
-        wrapper.addEventListener('mouseenter', stopAuto);
-        wrapper.addEventListener('mouseleave', startAuto);
-      }
-
-      // ========== 2. КАРУСЕЛЬ СЕРТИФИКАТОВ ==========
-      const certTrack = document.getElementById('certificatesTrack');
-      const certPrev = document.querySelector('.cert-prev-btn');
-      const certNext = document.querySelector('.cert-next-btn');
-      if (certTrack && certPrev && certNext) {
-        let autoScrollInterval;
-        let isDragging = false;
+        let isMouseDown = false;
         let startX = 0;
         let startScrollLeft = 0;
-        function getStep() {
-          const card = certTrack.querySelector('.certificate-card');
-          return card ? card.offsetWidth + 20 : 300;
+        const moveThreshold = 8;
+
+        function getGap() {
+          const styles = window.getComputedStyle(track);
+          const gap = parseFloat(styles.columnGap || styles.gap || "0");
+          return Number.isNaN(gap) ? 0 : gap;
         }
-        function scrollNext() { certTrack.scrollBy({ left: getStep(), behavior: 'smooth' }); }
-        function scrollPrev() { certTrack.scrollBy({ left: -getStep(), behavior: 'smooth' }); }
+
+        function getStep() {
+          const firstCard = track.children[0];
+          if (!firstCard) return track.clientWidth;
+          return firstCard.getBoundingClientRect().width + getGap();
+        }
+
+        function scrollByStep(direction) {
+          track.scrollBy({ left: getStep() * direction, behavior: "smooth" });
+        }
+
+        function scrollToStartIfEnd() {
+          const maxScroll = track.scrollWidth - track.clientWidth;
+          if (track.scrollLeft >= maxScroll - 4) {
+            track.scrollTo({ left: 0, behavior: "smooth" });
+            return true;
+          }
+          return false;
+        }
+
         function startAuto() {
           stopAuto();
-          autoScrollInterval = setInterval(() => {
-            const maxScroll = certTrack.scrollWidth - certTrack.clientWidth;
-            if (certTrack.scrollLeft + certTrack.clientWidth >= maxScroll - 10) {
-              certTrack.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-              scrollNext();
-            }
-          }, 4000);
+          autoPlayInterval = setInterval(() => {
+            if (!scrollToStartIfEnd()) scrollByStep(1);
+          }, delay);
         }
-        function stopAuto() { if (autoScrollInterval) clearInterval(autoScrollInterval); }
 
-        certPrev.addEventListener('click', () => { stopAuto(); scrollPrev(); startAuto(); });
-        certNext.addEventListener('click', () => { stopAuto(); scrollNext(); startAuto(); });
-        certTrack.addEventListener('mouseenter', stopAuto);
-        certTrack.addEventListener('mouseleave', startAuto);
-        certTrack.addEventListener('touchstart', stopAuto);
-        certTrack.addEventListener('touchend', startAuto);
+        function stopAuto() {
+          if (autoPlayInterval) clearInterval(autoPlayInterval);
+        }
 
-        // Desktop drag-scroll (ПК): позволяет листать мышью, как на мобилке.
-        certTrack.addEventListener('mousedown', (e) => {
-          isDragging = true;
-          startX = e.pageX;
-          startScrollLeft = certTrack.scrollLeft;
+        prevBtn.addEventListener("click", () => {
           stopAuto();
-          certTrack.style.scrollBehavior = 'auto';
-          e.preventDefault();
+          scrollByStep(-1);
+          startAuto();
         });
-
-        window.addEventListener('mousemove', (e) => {
-          if (!isDragging) return;
-          const walk = e.pageX - startX;
-          certTrack.scrollLeft = startScrollLeft - walk;
-        });
-
-        window.addEventListener('mouseup', () => {
-          if (!isDragging) return;
-          isDragging = false;
-          certTrack.style.scrollBehavior = 'smooth';
+        nextBtn.addEventListener("click", () => {
+          stopAuto();
+          scrollByStep(1);
           startAuto();
         });
 
-        certTrack.addEventListener('wheel', (e) => {
+        track.addEventListener("mouseenter", stopAuto);
+        track.addEventListener("mouseleave", startAuto);
+        track.addEventListener("touchstart", stopAuto, { passive: true });
+        track.addEventListener("touchend", startAuto, { passive: true });
+
+        track.addEventListener("mousedown", (e) => {
+          isMouseDown = true;
+          startX = e.pageX;
+          startScrollLeft = track.scrollLeft;
+          stopAuto();
+          track.style.scrollBehavior = "auto";
+          track.style.cursor = "grabbing";
+          e.preventDefault();
+        });
+
+        window.addEventListener("mousemove", (e) => {
+          if (!isMouseDown) return;
+          const walk = e.pageX - startX;
+          if (Math.abs(walk) > moveThreshold) {
+            track.scrollLeft = startScrollLeft - walk;
+          }
+        });
+
+        window.addEventListener("mouseup", () => {
+          if (!isMouseDown) return;
+          isMouseDown = false;
+          track.style.scrollBehavior = "smooth";
+          track.style.cursor = "grab";
+          startAuto();
+        });
+
+        track.addEventListener("wheel", (e) => {
           if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-            certTrack.scrollLeft += e.deltaY;
+            track.scrollLeft += e.deltaY;
             e.preventDefault();
           }
         }, { passive: false });
 
         startAuto();
       }
+
+      initModernCarousel({
+        trackSelector: "#carouselTrackLeft",
+        prevSelector: ".prev-btn",
+        nextSelector: ".next-btn",
+        delay: 5000
+      });
+
+      initModernCarousel({
+        trackSelector: "#certificatesTrack",
+        prevSelector: ".cert-prev-btn",
+        nextSelector: ".cert-next-btn",
+        delay: 4500
+      });
     })();
   </script>
 </body>
