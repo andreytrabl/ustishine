@@ -77,6 +77,38 @@
       </div>
     </div>
 
+    <div class="about-row videos-row">
+      <div class="about-text videos-header">
+        <h2>виДео</h2>
+      </div>
+      <div class="videos-carousel">
+        <div class="videos-wrapper">
+          <div class="videos-track" id="vkVideosTrack">
+            <div class="video-card">
+              <iframe src="https://vk.com/video_ext.php?oid=-227146749&id=456239043&hd=2" allowfullscreen="true" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" title="VK Video 1"></iframe>
+            </div>
+            <div class="video-card">
+              <iframe src="https://vk.com/video_ext.php?oid=-227146749&id=456239029&hd=2" allowfullscreen="true" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" title="VK Video 2"></iframe>
+            </div>
+            <div class="video-card">
+              <iframe src="https://vk.com/video_ext.php?oid=-227146749&id=456239063&hd=2" allowfullscreen="true" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" title="VK Video 3"></iframe>
+            </div>
+            <div class="video-card">
+              <iframe src="https://vk.com/video_ext.php?oid=-227146749&id=456239048&hd=2" allowfullscreen="true" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" title="VK Video 4"></iframe>
+            </div>
+            <div class="video-card">
+              <iframe src="https://vk.com/video_ext.php?oid=-227146749&id=456239021&hd=2" allowfullscreen="true" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" title="VK Video 5"></iframe>
+            </div>
+            <div class="video-card">
+              <iframe src="https://vk.com/video_ext.php?oid=-227146749&id=456239041&hd=2" allowfullscreen="true" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" title="VK Video 6"></iframe>
+            </div>
+          </div>
+          <button class="carousel-btn vk-prev-btn">&#10094;</button>
+          <button class="carousel-btn vk-next-btn">&#10095;</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Второй ряд: мои сертификаты – карусель карточек во всю ширину -->
     <div class="about-row certificates-row">
       <div class="about-text certificates-header">
@@ -320,6 +352,13 @@
         prevSelector: ".prev-btn",
         nextSelector: ".next-btn",
         delay: 5000
+      });
+
+      initModernCarousel({
+        trackSelector: "#vkVideosTrack",
+        prevSelector: ".vk-prev-btn",
+        nextSelector: ".vk-next-btn",
+        delay: 6000
       });
 
       initModernCarousel({
