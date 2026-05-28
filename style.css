@@ -30,6 +30,7 @@ html {
 body {
   font-family: 'Codec Pro', sans-serif;
   background: #000;
+  --site-bg: #000;
   color: #f5efe9;
   margin: 0;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -96,6 +97,17 @@ body {
   display: flex;
   align-items: center;
   background: url("hero.png") no-repeat center center/cover;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(80px, 14vh, 180px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--site-bg));
+  pointer-events: none;
+  z-index: 1;
 }
 .hero-content {
   position: relative;
@@ -164,7 +176,7 @@ body {
 
 /* ========== ABOUT ========== */
 .about-section {
-  padding: 100px 20px;
+  padding: 100px 20px 50px;
   background: inherit;
 }
 .about-row {
@@ -196,9 +208,19 @@ body {
 }
 .carousel-track {
   display: flex;
+  gap: 0;
   height: 100%;
-  will-change: transform;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
   cursor: grab;
+  touch-action: pan-y;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
 }
 .carousel-track:active {
   cursor: grabbing;
@@ -206,6 +228,7 @@ body {
 .carousel-slide {
   flex: 0 0 100%;
   height: 100%;
+  scroll-snap-align: start;
 }
 .carousel-slide img {
   width: 100%;
@@ -286,7 +309,8 @@ body {
   padding-bottom: 10px;
   cursor: grab;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-y; /* запрещаем браузеру перехватывать горизонтальные жесты */
+  touch-action: pan-y;
+  scroll-snap-type: x mandatory;
 }
 .certificates-track::-webkit-scrollbar {
   display: none;
@@ -299,6 +323,7 @@ body {
   aspect-ratio: 3 / 4;
   transition: transform 0.3s ease, background 0.3s ease;
   cursor: pointer;
+  scroll-snap-align: start;
 }
 .certificate-card:hover {
   transform: translateY(-5px);
@@ -348,7 +373,7 @@ body {
 
 /* ========== TRAINING ========== */
 .training-section {
-  padding: 100px 20px;
+  padding: 60px 20px 50px;
   background: inherit;
 }
 .training-container {
@@ -369,6 +394,8 @@ body {
 }
 .training-col {
   flex: 1;
+  display: flex;
+  flex-direction: column;
   background: rgba(255,255,255,0.03);
   padding: 40px 30px;
   border-radius: 16px;
@@ -384,14 +411,39 @@ body {
   font-weight: 700;
   margin-bottom: 20px;
 }
+.training-price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+  color: #ef7828;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.training-price-old {
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+.training-price-note {
+  margin-bottom: 20px;
+  color: #ef7828;
+  font-size: 16px;
+  font-weight: 400;
+}
 .training-col p {
   font-size: 16px;
   line-height: 1.6;
 }
+.training-action-btn {
+  margin-top: auto;
+  margin-bottom: 0;
+  align-self: flex-start;
+}
 
 /* ========== CONTACTS ========== */
 .contacts {
-  padding: 100px 20px;
+  padding: 60px 20px 100px;
   background: inherit;
 }
 .contacts-card {
@@ -512,6 +564,7 @@ body {
 @media (prefers-color-scheme: light) {
   body {
     background: #f4efe9;
+    --site-bg: #f4efe9;
     color: #2c2c2c;
   }
   .menu a {
@@ -547,6 +600,10 @@ body {
   }
   .training-col h3 {
     color: #2c2c2c;
+  }
+  .training-price,
+  .training-price-note {
+    color: #ef7828;
   }
   .contacts-card {
     background: rgba(0,0,0,0.03);
@@ -591,7 +648,7 @@ body {
     font-size: 120px;
   }
   .about-section {
-    padding: 80px 20px;
+    padding: 80px 20px 40px;
   }
   .about-row {
     gap: 30px;
@@ -605,13 +662,13 @@ body {
     font-size: 60px;
   }
   .training-section {
-    padding: 80px 20px;
+    padding: 50px 20px 40px;
   }
   .section-title {
     font-size: 60px;
   }
   .contacts {
-    padding: 80px 20px;
+    padding: 50px 20px 80px;
   }
   .contacts-card {
     flex-direction: column;
@@ -683,7 +740,7 @@ body {
     font-size: 16px;
   }
   .about-section {
-    padding: 80px 20px;
+    padding: 80px 20px 40px;
   }
   .about-row {
     flex-direction: column;
@@ -708,7 +765,7 @@ body {
     font-size: 16px;
   }
   .training-section {
-    padding: 80px 20px;
+    padding: 50px 20px 40px;
   }
   .section-title {
     font-size: 50px;
@@ -720,8 +777,14 @@ body {
   .training-col {
     text-align: center;
   }
+  .training-action-btn {
+    align-self: center;
+  }
+  .training-price {
+    justify-content: center;
+  }
   .contacts {
-    padding: 80px 20px;
+    padding: 50px 20px 80px;
   }
   .contacts-content {
     padding: 40px 30px;
@@ -763,7 +826,7 @@ body {
     font-size: 14px;
   }
   .about-section {
-    padding: 60px 20px;
+    padding: 60px 20px 30px;
   }
   .about-text h2 {
     font-size: 40px;
@@ -772,13 +835,13 @@ body {
     border-radius: 12px;
   }
   .training-section {
-    padding: 60px 20px;
+    padding: 40px 20px 30px;
   }
   .section-title {
     font-size: 40px;
   }
   .contacts {
-    padding: 60px 20px;
+    padding: 40px 20px 60px;
   }
   .contacts-content h3 {
     font-size: 28px;
